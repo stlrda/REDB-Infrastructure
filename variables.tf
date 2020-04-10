@@ -94,7 +94,7 @@ variable "number_of_workers" {
   default     = 1
 }
 
-#DB VARIABLES------------------------------------
+#AIRFLOW DB VARIABLES------------------------------------
 variable "db_instance_type" {
   description = "Instance type for PostgreSQL database"
   type        = string
@@ -138,3 +138,26 @@ variable "dag_git_repository_branch" {
   description = "Branch of repository to pull every 5 minutes."
   type = string
 }
+
+#REDB VARIABLES-----------------------------------------
+variable "redb_db_name" {
+  description = "Name of ETL target database"
+  type = string
+}
+
+variable "redb_db_instance_type" {
+  description = "Instance type of ETL target database"
+  type = string
+  default = "t2.large"
+}
+
+variable "redb_db_username" {
+  description = "Master Username for ETL target database"
+  type = string
+}
+
+variable "redb_db_password" {
+  description = "Master password for ETL target database"
+  type = string
+}
+
