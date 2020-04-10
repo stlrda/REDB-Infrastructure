@@ -33,7 +33,7 @@ module "redb-platform" {
 #Create S3 bucket as ETL processes workspace
 #-------------------------------------------------------------
 resource "aws_s3_bucket" "airflow_workbucket" {
-  bucket = "airflow_workbucket"
+  bucket = "airflow-workbucket"
   force_destroy = true
   region = var.aws_region
   tags = var.tags

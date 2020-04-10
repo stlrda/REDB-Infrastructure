@@ -39,9 +39,5 @@ dag_git_repository_branch="master"
 
 #REDB VARIABLES----------------------------------------
 redb_db_name = "redb"
-redb_db_instance_class = "db.t2.large"
-redb_db_allocated_storage = 20
-redb_db_username = "Master username for the created ETL target database"
-redb_db_password = "Master password for the created ETL target database"
-redb_db_maintenance_window = "Tue:00:00-Tues:03:00"
-redb_db_backup_window = "03:00-06:00"
+redb_db_username = "airflow_user"
+redb_db_password = "gVd%LM9zH!xXc6h23kEh^qFtT6*SxF6RFbtUt5pTy6!ky$sB8o!u#*N&7pn68yR#"
