@@ -148,7 +148,7 @@ variable "redb_db_name" {
 variable "redb_db_instance_type" {
   description = "Instance type of ETL target database"
   type = string
-  default = "t2.large"
+  default = "db.t2.large"
 }
 
 variable "redb_db_username" {
