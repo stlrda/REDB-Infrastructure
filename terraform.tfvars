@@ -18,7 +18,7 @@ fernet_key = "dIC66V4LWTDB5MF0Ah7OxhINY8zflP3MUHJEWhpfPYk="
 
 #AIRFLOW CONFIG VARIABLES------------------------------
 time_zone = "America/Chicago"
-load_examples = "True"
+load_examples = "False"
 
 #EC2 VARIABLES (APPLY TO ALL EC2 INSTANCES UNLESSS OTHERWISE SPECIFIED)--------------------------
 webserver_instance_type = "t3.micro"

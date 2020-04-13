@@ -59,7 +59,7 @@ resource "aws_db_instance" "airflow_database" {
   skip_final_snapshot     = true
   vpc_security_group_ids  = [module.redb-platform.cluster_nodes_sg_id]
   port                    = 5432
-  db_subnet_group_name    = module.redb-platform.cluster_nodes_subnet_group
+  db_subnet_group_name    = module.redb-platform.db_subnet_group
   allocated_storage       = 20
 }
 
