@@ -42,7 +42,57 @@ resource "aws_s3_bucket" "airflow_workbucket" {
 #--------------------------------------------------------------
 #Create RDS Database as ETL Target
 #--------------------------------------------------------------
-#TODO Add db-sg.id  and rds_subnet_group.name to module outputs
+resource "aws_security_group" "redb_db_security_group" {
+  name = "redb_db_security_group"
+  description = "Security group for target database"
+  vpc_id = module.redb-platform.cluster_vpc_id
+  tags = var.tags
+
+    ingress {
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    description = "HTTP"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port   = 443
+    to_port     = 443
+    protocol    = "tcp"
+    description = "HTTPS"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    description = "SSH"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port   = 5432
+    to_port     = 5432
+    protocol    = "tcp"
+    description = "postgresql-tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+
+
 resource "aws_db_instance" "airflow_database" {
   identifier              = "${var.redb_db_name}-db"
   instance_class          = var.redb_db_instance_type
@@ -54,13 +104,11 @@ resource "aws_db_instance" "airflow_database" {
   storage_type            = "gp2"
   backup_retention_period = 7
   multi_az                = false
-  publicly_accessible     = false
+  publicly_accessible     = true
   apply_immediately       = true
   skip_final_snapshot     = true
-  vpc_security_group_ids  = [module.redb-platform.cluster_nodes_sg_id]
+  vpc_security_group_ids  = ["${aws_security_group.redb_db_security_group.id}"]
   port                    = 5432
   db_subnet_group_name    = module.redb-platform.db_subnet_group
   allocated_storage       = 20
 }
-
-nonsense change
