@@ -4,9 +4,9 @@
 
 terraform {
   backend "s3" {
-    bucket         = "rda-airflow-tfstate"
-    key            = "terraform/terraform.tfstate"
+    bucket         = "stlrda-terraform-tfstates"
+    key            = "redb/terraform.tfstate"
     region         = "us-east-1"
-    dynamodb_table = "terraform-airflow-tfstate"
+    dynamodb_table = "redb-tfstate"
   }
 }
