@@ -1,5 +1,6 @@
 # Airflow-Infrastructure
-A Terraform module for creating an [Apache Airflow](https://airflow.apache.org/) project within the context of the [Airflow-Platorm](https://github.com/stlrda/Airflow-Platform) module and Saint Louis Regional Data Alliance Airflow Project Management Framework (outlined below). 
+A Terraform module for creating an [Apache Airflow](https://airflow.apache.org/) project within the context of the [Airflow-Platorm](https://github.com/stlrda/Airflow-Platform) module and Saint Louis Regional Data Alliance Airflow Project Management Framework (outlined below). This module is designed to serve as a template; create a separate repository for each Airflow project 
+
 # Architecture
 This module creates numerous AWS resources; the description and diagram provides a general outline, but we encourage organizations to review the module themselves before deploying. This module creates the non-Airflow resources necessary for an Airflow managed ELT program; an S3 bucket for the Airflow workers to store shared workfiles, and a PostGreSQL database to serve as an ELT target.
 
